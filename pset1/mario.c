@@ -1,5 +1,7 @@
+/*
 #include <stdio.h>
 #include <cs50.h>
+
 
 int main(void)
 {
@@ -59,7 +61,7 @@ int main(void)
 
 
 }
-
+*/
 
 
 // Below is whatg I  was trying to use to solve this before I realized I needed to tie everything to the variable step from the loop containing all other loops.
