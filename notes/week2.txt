@@ -1,0 +1,15 @@
+
+week2's lecture touched upon debugging using printf or similar for other languages, but also taught us how to use debug50, the cs50 ide's debugging feature. He also touched upon rubber ducky debugging.
+
+now were learning about arrays, and he just introduced constants and said something I had never heard of before. That is to always:
+
+CAPITALIZE CONSTANTS!
+
+so that you can see visually, that theres something different about this not so variable variable.
+
+you can use %i to printf() a char to get the ascii number
+
+use single quotes for single characters
+
+
+
