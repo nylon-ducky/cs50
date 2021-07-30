@@ -11,5 +11,10 @@ you can use %i to printf() a char to get the ascii number
 
 use single quotes for single characters
 
+#include <string.h> for strlen() function.
 
+to declare a function, you need to copy the line of declaration, and paste it up by your includes. be sure to use a semicolon too!
+
+instead of declaring an array's size, if it's small and you have the values already, you can declare it and the values in one line, like this:
+int nums[] = {1, 7, 42, 3, 19, 3};
 
