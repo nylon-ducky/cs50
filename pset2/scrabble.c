@@ -1,3 +1,4 @@
+/*
 #include <ctype.h>
 #include <cs50.h>
 #include <stdio.h>
@@ -91,3 +92,4 @@ int compute_score(string word)
 
 
 // cd ~/pset2/scrabble
+*/
