@@ -18,3 +18,16 @@ to declare a function, you need to copy the line of declaration, and paste it up
 instead of declaring an array's size, if it's small and you have the values already, you can declare it and the values in one line, like this:
 int nums[] = {1, 7, 42, 3, 19, 3};
 
+command line arguments, traditionally called int argc (arg count) and string argv (arg vector)
+they go into the main function   
+int main(int argc, string argv[])
+
+return:
+return 0 if everything went well, or return 1 if there was an error.
+
+one thing I discovered on my own this week was 
+continue;
+
+I used continue to not skip over an iteration, but to sort of say this iteration is finished, theres no need to run this variable through the rest of the loop.
+
+

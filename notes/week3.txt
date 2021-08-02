@@ -1,0 +1,55 @@
+in week 3 we covered breifly what we went over last week, and were introduced to:
+
+linear search: one at a time
+binary search: cutting in half then half again and so on
+
+
+big O notation which is the worst case scenario of how long an algorithm will take 
+
+omega notation which can be thought of as little o or just the lower bounds, best case scenario of how quickly you can find something
+
+theta (which is an o with a dash inside it without actuually touching the outer ring that is the o)
+theta notation is when an algorithms best and worst case scenario are the same
+
+Main always returns an int, probably either 0 or 1 to say success or error, but Ive just realized this is what was tripping me up on pset2, for my first attempt. I kept getting an error saying it was trying to return an int and I couldnt cast a string to an int .... that was the problem! I shouldve been just returning a 0 or 1 
+
+
+in c you can't use == to compare two strings.
+
+but with string.h import or include, theres a function: 
+strcmp()
+that can compare two strings.
+this function will return:
+ 0 if they match.
+ <0 or some negative number if alphabetically, the first 
+    string goes before the second
+ >0 or some positive number if the first string goes 
+    after the second alphabetically
+
+actually it compares strings ascii-betically.
+
+so if youre comparing strings that begin with a capitol A and a lowercase a, the capitol will be seen as a lower number because they come first on the ascii table.
+
+making your own datatypes or data structures with more than one value inside them.
+typedef struct
+{
+    string name;
+    string phone_num;
+}
+person;
+
+I've just created a datatype (technically a data structure) of person. it contains a string of their name, and a string of their phone number. its a string because phone numbers can be a little funny and can contain all sorts of characters, or even letters. such as 1-800-contacts.
+
+To access this data, it acts like a nested associative array, i think ... maybe just an associative array. either way, its just like accessing Json data. if you wanted to make persons, you would use this syntax:
+
+person people[2];
+people[0].name = "Z";
+people[0].phone_num = "555-555-5545";
+people[1].name = "j, son";
+people[1].phone_num = "1-800-j-son"; 
+
+
+selection sort 
+bubble sort
+
+
