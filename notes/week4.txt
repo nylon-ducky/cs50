@@ -1,0 +1,86 @@
+this week we were introduced to pointers, the star for pointers, and the ampersand for pointers. 
+
+the star says hey, this is a pointer.
+
+the ampersand says hay, go to this address, or follow this pointer to where its pointing to.
+
+also the way they made the data type string for us was like this:
+typedef char *string;
+
+a string is a char, as we know, and the star is a pointer to the first char in the string. the cs50 library just abstracted that away for us.
+
+ALSO! you can printf the pointer address of a variable with %p 
+
+
+
+pointer arithmetic
+the square bracket notation is really just abstracted pointer arithmetic.
+char *s = "hi!";
+printf("%c", s[1]);
+    this would return i, but its doing the same thing as
+printf("%c", *(s + 1));
+    using this notation would give the same result because s is just a pointer to the first character of the string. and strings are stored character by character until its over, then theres a \0 to say this is a null byte and each char additional char is stored in the very next byte, so using + 1 just says hey, take that address, and go to the next one.
+
+
+NUL vs NULL 
+nul is the \0 chaaracter, its used in the context of characters, 
+but
+NULL is used in the context of pointers and stands for null pointer, or the absence of a pointer which would mean memory space has not been allocated for this.
+
+malloc()
+stands for memory allocation. 
+when using malloc, youre asking the computer for some memory.
+and maybe you can have it, but youre only borrowing it. you NEED to give it back. 
+
+you can give that memory back with:
+free()
+and inside free you put the variable name, which is just a pointer to the memory you need to free up
+
+valgrind
+valgrind is a command line interface (cli) program to look at memory allocation. you can run valgrind on your programs just like debug50:
+valgrind ./population
+this returns a bunch of stuff, saying how much memory has been allocated and how, how many frees you use, and how many bytes are lost or allocated, but unfreed. it even tells you where!
+
+memory segmentation
+
+machine code
+global variables
+heap
+
+stack
+
+functions use stack memory space.
+
+using addresses on your parameters as in making params pointers to the address of the variables, allows you to access the actual value of variables passed into the function
+
+
+for things like get_string, 
+scanf is equivalent to get. but you need to understand pointers.
+
+int x;
+printf("x: ");
+scanf("%i", &x);
+printf("x = %i\n", x);
+
+instead of isong an ampersand in scanf, if you put a star by x in int x;
+it would already be a pointer, so you wouldnt need to use the ampersand to say hey, go here. However! you would also need to use malloc if youre using the star to create it as a pointer.
+
+FILE 
+in all caps, file is a data type. used much like any other.
+FILE *booty = fopen("butts.csv", "a"); 
+    here, the a stands for append, but you can open a file just to read it, or to write to it as well.
+fprintf(booty, "%s,%s\n", string1, string2);
+    with fprintf, the prependedf stands for file.
+    this is how you alter and save a file. 
+    it's sort of backwards when compared to printf though, because here we write in the name of the file variable first. then we format the information were adding, then just like printf, we still specify where to find said information.
+fclose(booty);
+    if we open a bag of chips, weve got to close it too when were done, and the same goes for files. also just like free() when we borrow memory, weve got to return it to it's original state.
+
+fread
+much like fopen theres fread if you just want to read a file, but that also takes in some arguments ... look em up!
+
+
+
+
+
+
