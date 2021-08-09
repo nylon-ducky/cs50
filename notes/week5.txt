@@ -1,0 +1,204 @@
+Today in week 5, were covering datastructures. 
+this lecture mostly focused on linked lists, they were the subject for more than half the lecture (which is over 2 hours)
+but the very real possibility of orphaning data, which means to forget where it is or in other words, to lose the pointer to something in a linked list, would create a huge memory leak, which valgrind will pick up, but all the shuffeling of pointers can get confusing, so heres a link to the lecture:
+
+https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@f9406c13555541b0a38a37a12e1d52ff/block-v1:HarvardX+CS50+X+type@vertical+block@43e7ede2ae8745d7b1741616a49178ee
+
+gotta sign in to view it, but you could also probably look it up on youtube:
+cs50 week 5 datas tructures 2021
+
+
+
+
+
+first we looked at linked lists, where you would use:
+typedef struct node
+{
+    int data;
+    node *next;
+}
+node;
+
+the arrow operator basically just acts as a pointer to follow.
+so we might see a node declared with a name of list, and this syntax to assign a value list->data = 1;
+list->next = pointer_to_next_node;
+
+
+pointer next should be null if it's the last or only value in the list.
+
+
+where node is the linked list structure, data is the important data we need, and next is a pointer to the next value in that list which is another node structure with data and a pointer to the next and so on.
+
+to use node as a linked list though, we:
+node *list = NULL;
+
+node *n = malloc(sizeof(node));
+
+if (n == NULL)
+{
+    return 1;
+}
+n->data = 1;
+n->next = NULL;
+list = n;
+
+n = malloc(sizeof(node));
+
+if (n == NULL)
+(
+    free(list);
+    return 1;
+)
+
+n->data = 2;
+n->next = NULL;
+list->next = n;
+
+    then we might run this one more time.
+
+n = malloc(sizeof(node));
+
+if (n == NULL)
+(
+    free(list->next);
+    free(list);
+    return 1;
+)
+
+n->data = 3;
+n->next = NULL;
+list->next->next = n;
+
+        then lets print it out
+
+for (node *tmp = list; tmp != NULL; tmp = tmp->next)
+{
+    printf("tmp = %i", tmp->data);
+}
+
+this for loop says:
+give me a temporary node structure called tmp.
+make tmp a pointer to the beginning of list. (1st node)
+then while tmp isnt null. (which indicates no more nodes)
+update tmp to be a pointer to the next node in list.
+then print the data from that node.
+
+
+we could also use this syntax to assign data and create nodes in the linked list, rather than using:
+list->next->next 
+like we did to assign a pointer to the last node.
+
+then for good measure, we should free up list.
+dont forget to free any memory borrowed with malloc.
+you can check this with:
+valgrind
+but to free it up:
+
+while (list != NULL)
+{
+    node *tmp = list->next;
+    free(list);
+    list = tmp;
+}
+
+here we copy the pointers to the next node from list, by using:
+ node *tmp = list->next
+so that by freeing up the data that came before it, we dont lose access to the rest of the list that we still need to delete.
+then we reassign list to be tmp, which is the next node that came after the first one, which we deleted. and delete that too. so really, this is shuffeling values to the front of the line known as list, to be deleted or freed until list = null, which means were out of values and cant free any more data because that data doeesnt exist.
+
+
+
+
+
+
+
+we also regressed after he started talking about linked list and started to talk instead about using malloc to create basically an array of whatever datatype. above we used nodes, so we might want to make an array of node values. 
+
+int *list = malloc(3 * sizeof(int))
+
+this can be treated as an array.
+but check to be sure things != null to ensure nothing went wrong.
+
+theres also realloc, much like malloc, it gives you some memory space, but this takes two arguments. 
+
+int new_list = realloc(list, 4 * sizeof(int));
+
+this will rallocate space for the first thing you malloc'd which in this case is list, and put that data into new_list plus the extra room you requested for additional data.
+
+
+
+
+
+
+BINARY SEARCH TREE
+
+a binary search tree is like a linked list, but if using numbers, it looks like this:
+
+        4
+    3       5
+  1   2   6   7
+
+  it might look weird, but its actually super efficient. it has a big o notation of O(log n)
+  log being a base of two, basically meaning, the operation takes about half the number of items you have in your tree. binary search is just cutting a data set in half and half again until you find what you want.
+
+  here, if we want to find 6, we would:
+   step 1: go to the middle. which is 4
+   is 6 <= 3 ? no, forget that left half, or the lower half.
+   is 6 >= 5 ? yes, go to 5.
+   is 6 <= 6 ? yes, go down one level, and to the left because its less than 7, the other option from 5.
+     
+      it looks something like that. youll probably look strictly at the higher side first though.
+
+
+
+HASH TABLES
+
+hash tables are basically an array of linked lists.
+
+basically, the way i would explain it is if youve got a list of friends to add to a book of contacts.
+
+you might start with an array the length of the alphabet. then if youve got multiple friends with the same first letter of their name, you might want to link them to each other in alphabetical order.  or if the dataset is larger, you might want to split the base array up a bit more, possibly making that array double the size and having 
+
+
+
+
+
+TRY
+
+short for the word retrieval
+also known as a prefix tree
+
+typically used to store words or other more sophisticated data, rather than just numbers.
+
+a try is a tree made up of arrays
+
+the structure of this in terms of names is each letter that is part of a name entered, has a pointer to another array, and so on, until you get to the last letter of the name. this is pretty confusing, but it leads to a constant time for big o notation. as in, the amount of steps will only ever be the length of the name youre searching for, but comes at the cost of memory. it seems like this would be an outrageous memory hog, but it is efficient.
+
+I should still try to find another explanation of a try in c
+maybe the shorts will cover that 
+
+
+QUEUES  
+
+a queue is basically a first come first served system. 
+known as FIFO first in, first out.
+
+    enqueue     and     dequeue  
+
+best to be implemented with a linked list rather than an array.
+
+
+
+STACK
+
+    LIFO
+    last in first out.
+push and pop jike in JS
+
+
+DICTIONARY
+abstract datatype 
+key value pairs
+    like letters as keys with corrosponding names as values
+
+
