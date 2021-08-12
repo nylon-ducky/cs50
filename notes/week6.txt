@@ -1,0 +1,21 @@
+PYTHON
+
+today were covering python. so far weve covered all the bassic data types, as well as: 
+dict or dictionaries
+touple or csv, comma seperated values
+sets, like A B C or what have you. (no repeats or doubles)
+
+
+cs50 library has about the same functionality as it did in C
+
+importing things to python can look like these:
+
+import cs50
+
+from cs50 import get_string, get_int
+
+
+NOTE/THOUGHT:
+        gosh, i totally forgot how awesome it is to work in these more high level languages, it is sooooo sweet!
+        c, being such a low level language was really fun, but gosh, it was so tedious to do some of the simplest things. I'm so excited to be working eith python now ..... thats something i never thought id say, since when i first tried to work with python, i decided i hated it. but now, after the very enjoyable and fun, but so tedious/strenuous language of c, I can really appreciate these other languages so much more for their simplicity and or abstraction.
+
